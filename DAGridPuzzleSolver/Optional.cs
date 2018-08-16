@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chess.Util
+namespace DAGridPuzzleSolver
 {
     /**
      * Optional container class, similar to one provided in Java
@@ -73,7 +73,7 @@ namespace Chess.Util
         {
             if (HasValue && other.HasValue)
             {
-                return object.Equals(value, other.value);
+                return Equals(value, other.value);
             }
             else
             {

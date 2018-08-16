@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using Chess.Util;
 
 namespace DAGridPuzzleSolver
@@ -11,8 +9,8 @@ namespace DAGridPuzzleSolver
     {
         public enum State
         {
-            on = 1,
-            off = 0
+            On = 1,
+            Off = 0
         }
 
         private State state;
@@ -25,19 +23,19 @@ namespace DAGridPuzzleSolver
 
         public LightNode(Vec2<ushort> position)
         {
-            state = State.off;
+            state = State.Off;
             this.position = position;
         }
 
         public void Toggle()
         {
-            if (CurrentState == State.off)
+            if (CurrentState == State.Off)
             {
-                state = State.on;
+                state = State.On;
             }
-            else if (CurrentState == State.on)
+            else if (CurrentState == State.On)
             {
-                state = State.off;
+                state = State.Off;
             }
 
             foreach (var neighbor in LateralNeighbors)
@@ -50,9 +48,9 @@ namespace DAGridPuzzleSolver
         {
             switch (state)
             {
-                case State.on:
+                case State.On:
                     return "⬜";
-                case State.off:
+                case State.Off:
                     return "⬛️";
             }
             
