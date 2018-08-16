@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Chess.Util;
@@ -29,6 +29,16 @@ namespace DAGridPuzzleSolver
 
         public void Toggle()
         {
+            toggle();
+
+            foreach (var neighbor in LateralNeighbors)
+            {
+                neighbor.toggle();
+            }
+        }
+
+        private void toggle()
+        {
             if (CurrentState == State.Off)
             {
                 state = State.On;
@@ -37,11 +47,6 @@ namespace DAGridPuzzleSolver
             {
                 state = State.Off;
             }
-
-            foreach (var neighbor in LateralNeighbors)
-            {
-                neighbor.Toggle();
-            }
         }
 
         public override String ToString()
@@ -49,9 +54,9 @@ namespace DAGridPuzzleSolver
             switch (state)
             {
                 case State.On:
-                    return "⬜";
+                    return "□";
                 case State.Off:
-                    return "⬛️";
+                    return "■";
             }
             
             throw new InvalidEnumArgumentException("Unhandled Node State enum value");

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Chess.Util;
@@ -27,11 +27,14 @@ namespace DAGridPuzzleSolver
             {
                 for (ushort x = 0; x < Grid.Count; x++)
                 {
-                    builder.Append(Grid[x][y]);
+                    builder.Append(Grid[x][y].ToString());
+                    builder.Append(" ");
                 }
 
                 builder.Append('\n');
             }
+            
+            builder.Append('\n');
 
             return builder.ToString();
         }
@@ -65,7 +68,7 @@ namespace DAGridPuzzleSolver
                     LightNode node = column[j];
 
                     initializeLightNodeNeighbors(node);
-                    
+      
                 }
                 
             }
@@ -78,15 +81,17 @@ namespace DAGridPuzzleSolver
             {
                 for (short yOffset = -1; yOffset <= 1; yOffset++)
                 {
-                    if (xOffset == yOffset)
+                    
+                    if (Math.Abs(xOffset) == Math.Abs(yOffset))
                     {
                         continue;
                     }
                     
                     Vec2<short> offset = new Vec2<short>(xOffset, yOffset);
                     Vec2<short> position = node.position.ConvertMemberType<short>();
-                    
-                    Optional<LightNode> possibleNeighbor = getNodeAt(position - offset);
+
+                    Vec2<short> potentialNeighborPosition = position - offset;
+                    Optional<LightNode> possibleNeighbor = getNodeAt(potentialNeighborPosition);
 
                     if (possibleNeighbor.HasValue)
                     {

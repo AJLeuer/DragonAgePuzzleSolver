@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Reflection;
 
 namespace System
 {
@@ -105,17 +106,30 @@ namespace Chess.Util
 
         public static Vec2<N> operator + (Vec2<N> vector0, Vec2<N> vector1)
         {
-            return new Vec2<N>((dynamic) vector0.x + vector1.y, (dynamic) vector0.y + vector1.y);
-        }
-        
-        public static Vec2<long> operator + (Vec2<N> vector0, Vec2<short> vector1)
-        {
-            return new Vec2<long>((dynamic)vector0.x + vector1.y, (dynamic)vector0.y + vector1.y);
+            dynamic vector0X = vector0.x;
+            dynamic vector1X = vector1.x;
+            
+            dynamic vector0Y = vector0.y;
+            dynamic vector1Y = vector1.y;
+
+            N x = (N)(vector0X + vector1X);
+            N y = (N)(vector0Y + vector1Y);
+            
+            return new Vec2<N>(x, y);
         }
 
         public static Vec2<N> operator - (Vec2<N> vector0, Vec2<N> vector1)
         {
-            return new Vec2<N>((dynamic) vector0.x - vector1.y, (dynamic) vector0.y - vector1.y);
+            dynamic vector0X = vector0.x;
+            dynamic vector1X = vector1.x;
+            
+            dynamic vector0Y = vector0.y;
+            dynamic vector1Y = vector1.y;
+
+            N x = (N)(vector0X - vector1X);
+            N y = (N)(vector0Y - vector1Y);
+            
+            return new Vec2<N>(x, y);
         }
         
         public static Vec2<N> operator * (Vec2<N> vector, uint n)

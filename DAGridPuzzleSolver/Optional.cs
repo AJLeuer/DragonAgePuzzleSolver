@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace DAGridPuzzleSolver
 {
@@ -11,7 +11,7 @@ namespace DAGridPuzzleSolver
     {
         public bool HasValue
         {
-            get { return Value != null; }
+            get { return value != null; }
         }
 
         private T value;
