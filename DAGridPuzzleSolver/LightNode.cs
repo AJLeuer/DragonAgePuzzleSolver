@@ -54,9 +54,9 @@ namespace DAGridPuzzleSolver
             switch (state)
             {
                 case State.On:
-                    return "□";
-                case State.Off:
                     return "■";
+                case State.Off:
+                    return "□";
             }
             
             throw new InvalidEnumArgumentException("Unhandled Node State enum value");
